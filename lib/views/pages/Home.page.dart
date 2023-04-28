@@ -7,8 +7,23 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size =  MediaQuery.of(context).size;
     return SearchLayout(
-      child: CardComponent(),
+      child: SizedBox(
+        height: size.height / 1.34,
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverList(
+              delegate: SliverChildBuilderDelegate(
+                    (BuildContext context, int index) {
+                  return CardComponent();
+                },
+                childCount: 20,
+              ),
+            )
+          ],
+        ),
+      )
     );
   }
 }
