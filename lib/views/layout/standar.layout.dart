@@ -1,3 +1,4 @@
+import 'package:catspragma/views/ui/footer.ui.dart';
 import 'package:flutter/material.dart';
 
 import '../ui/logo.ui.dart';
@@ -16,7 +17,7 @@ class StandarLayout extends StatelessWidget {
       body: Column(
         children: [
           Expanded(child: child),
-          const Text("Development: David Valenzuela Pardo", style: TextStyle(fontSize: 12),)
+          Footer()
         ],
       ),
     );

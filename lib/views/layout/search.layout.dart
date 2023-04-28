@@ -2,6 +2,8 @@ import 'package:catspragma/views/ui/input.ui.dart';
 import 'package:catspragma/views/ui/logo.ui.dart';
 import 'package:flutter/material.dart';
 
+import '../ui/footer.ui.dart';
+
 class SearchLayout extends StatelessWidget {
   final Widget child;
 
@@ -36,7 +38,7 @@ class SearchLayout extends StatelessWidget {
                   }
                 }),
             Expanded(child: child),
-            const Text("Development: David Valenzuela Pardo", style: TextStyle(fontSize: 12),)
+            Footer()
           ],
         ),
       )

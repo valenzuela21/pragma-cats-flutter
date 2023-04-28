@@ -24,7 +24,7 @@ class HomePage extends StatelessWidget {
             )
           ],
         ),
-      
+
     );
   }
 }
