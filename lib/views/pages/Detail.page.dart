@@ -70,22 +70,22 @@ class _ContentDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       height: size.height / 1.5,
       child: ListView(
         children: [
           Text("Description: ", style: TextStyle(fontSize: 22)),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text("${data?.description}"),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Text('Temperament: ', style: TextStyle(fontSize: 22)),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text("${data?.temperament}"),
-          SizedBox(height: 20),
+          const SizedBox(height: 20),
           Text('Origin: ', style: TextStyle(fontSize: 22)),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text("${data?.origin}"),
-          SizedBox(height: 20)
+          const SizedBox(height: 20)
         ],
       ),
     );
