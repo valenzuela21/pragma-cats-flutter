@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           title: 'Cats Pragma',
           theme: ThemeData(
-              colorScheme: ColorScheme.light().copyWith(
+              colorScheme: const ColorScheme.light().copyWith(
                 // to use the primaryColor
                 primary: Colors.purple.shade500,
               ),

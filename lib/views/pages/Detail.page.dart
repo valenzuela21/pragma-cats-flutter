@@ -11,7 +11,9 @@ class DetailPage extends StatelessWidget {
     final cat = ModalRoute.of(context)?.settings.arguments as Cats;
     return StandarLayout(
       child: Column(
-        children: [_HeaderDetail(size: size, data: cat), _ContentDescription(size: size, data: cat)],
+        children: [_HeaderDetail(size: size, data: cat),
+          Expanded(child: _ContentDescription(size: size, data: cat))
+          ],
       ),
     );
   }
@@ -46,9 +48,9 @@ class _HeaderDetail extends StatelessWidget {
         Column(
           children: [
             Text("${data?.name}",
-                style: TextStyle(color: Colors.white, fontSize: 24)),
+                style: const TextStyle(color: Colors.white, fontSize: 24)),
             Text("${data?.weight.imperial} años",
-                style: TextStyle(color: Colors.white, fontSize: 14))
+                style: const TextStyle(color: Colors.white, fontSize: 14))
           ],
         )
       ],
@@ -69,24 +71,23 @@ class _ContentDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(10),
-      height: size.height / 1.5,
+    return Padding(
+      padding: EdgeInsets.all(10),
       child: ListView(
-        children: [
-          Text("Description: ", style: TextStyle(fontSize: 22)),
-          const SizedBox(height: 10),
-          Text("${data?.description}"),
-          const SizedBox(height: 20),
-          Text('Temperament: ', style: TextStyle(fontSize: 22)),
-          const SizedBox(height: 10),
-          Text("${data?.temperament}"),
-          const SizedBox(height: 20),
-          Text('Origin: ', style: TextStyle(fontSize: 22)),
-          const SizedBox(height: 10),
-          Text("${data?.origin}"),
-          const SizedBox(height: 20)
-        ],
+          children: [
+            const Text("Description: ", style: TextStyle(fontSize: 22)),
+            const SizedBox(height: 10),
+            Text("${data?.description}"),
+            const SizedBox(height: 20),
+            const Text('Temperament: ', style: TextStyle(fontSize: 22)),
+            const SizedBox(height: 10),
+            Text("${data?.temperament}"),
+            const SizedBox(height: 20),
+            const Text('Origin: ', style: TextStyle(fontSize: 22)),
+            const SizedBox(height: 10),
+            Text("${data?.origin}"),
+            const SizedBox(height: 20)
+          ],
       ),
     );
   }

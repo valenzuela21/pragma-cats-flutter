@@ -2,8 +2,6 @@ import 'package:catspragma/exceptions/message_exception.dart';
 import 'package:catspragma/models/custom_error.model.dart';
 import 'package:catspragma/services/cats_pragma_api.service.dart';
 
-import '../models/cats.model.dart';
-
 class CatsRepository {
   final CatsPragmaApiServices catsPragmaApiServices;
 

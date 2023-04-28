@@ -41,7 +41,7 @@ class CardComponent extends StatelessWidget {
             Positioned(
               right: 0,
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 10),
+                padding: const EdgeInsets.symmetric(vertical: 10),
                 alignment: Alignment.centerRight,
                 width: 100,
                 height: 50,
@@ -64,7 +64,7 @@ class CardComponent extends StatelessWidget {
             Positioned(
               left: 0,
               child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   alignment: Alignment.centerLeft,
                   width: 200,
                   height: 50,

@@ -27,7 +27,6 @@ class CatsBloc extends Bloc<CatsEvent, CatsState> {
     final List<dynamic> cats = await catsRepository.allCats();
     emit(state.copyWith(status: CatsStatus.loaded, cats: cats));
   }on CustomError catch(e){
-    print("Transfer Data error Cats");
     emit(state.copyWith(status: CatsStatus.error, error: e));
   }
   }

@@ -12,7 +12,7 @@ class CatsPragmaApiServices {
   });
 
   Future<List<dynamic>> getAllCats() async {
-    List<dynamic> _cats;
+    List<dynamic> cats;
     final Uri uri =  Uri(
       scheme: 'https',
       host: kApiHost,
@@ -24,8 +24,8 @@ class CatsPragmaApiServices {
         throw httpErrorHandler(response);
       }
       final catsJson =  json.decode(response.body);
-      _cats = catsJson.map((json) => Cats.fromJson(json)).toList();
-      return _cats;
+      cats = catsJson.map((json) => Cats.fromJson(json)).toList();
+      return cats;
     }catch(e){
       rethrow;
     }
