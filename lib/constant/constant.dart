@@ -1,0 +1,1 @@
+const String kApiHost = 'api.thecatapi.com';

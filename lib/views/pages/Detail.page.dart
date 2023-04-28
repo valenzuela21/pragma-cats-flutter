@@ -1,3 +1,4 @@
+import 'package:catspragma/models/cats.model.dart';
 import 'package:catspragma/views/layout/standar.layout.dart';
 import 'package:flutter/material.dart';
 
@@ -7,21 +8,24 @@ class DetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
+    final cat = ModalRoute.of(context)?.settings.arguments as Cats;
     return StandarLayout(
       child: Column(
-        children: [_HeaderDetail(size: size), _ContentDescription(size: size)],
+        children: [_HeaderDetail(size: size, data: cat), _ContentDescription(size: size, data: cat)],
       ),
     );
   }
 }
 
 class _HeaderDetail extends StatelessWidget {
+  final Size size;
+  final Cats? data;
+
   const _HeaderDetail({
     super.key,
     required this.size,
+    required this.data
   });
-
-  final Size size;
 
   @override
   Widget build(BuildContext context) {
@@ -32,29 +36,18 @@ class _HeaderDetail extends StatelessWidget {
           width: double.infinity,
           height: size.height / 4.6,
           child: Image.network(
-              'https://cdn2.thecatapi.com/images/0XYvRd7oD.jpg',
+              'https://cdn2.thecatapi.com/images/${data?.referenceImageId}.jpg',
               fit: BoxFit.cover,
               color: Colors.black38,
               alignment: Alignment.center,
-              colorBlendMode: BlendMode.multiply, loadingBuilder:
-                  (BuildContext context, Widget child,
-                      ImageChunkEvent? loadingProgress) {
-            if (loadingProgress == null) return child;
-            return Transform.scale(
-              scaleX: 0.15,
-              scaleY: 0.35,
-              child: CircularProgressIndicator(
-                backgroundColor: Colors.grey.shade300,
-                strokeWidth: 20.5,
-              ),
-            );
-          }),
+              colorBlendMode: BlendMode.multiply
+          ),
         ),
         Column(
           children: [
-            Text("Abyssinian",
+            Text("${data?.name}",
                 style: TextStyle(color: Colors.white, fontSize: 24)),
-            Text("9 - 12 años",
+            Text("${data?.weight.imperial} años",
                 style: TextStyle(color: Colors.white, fontSize: 14))
           ],
         )
@@ -64,12 +57,15 @@ class _HeaderDetail extends StatelessWidget {
 }
 
 class _ContentDescription extends StatelessWidget {
+  final Size size;
+  final Cats? data;
+
   const _ContentDescription({
     super.key,
     required this.size,
+    required this.data
   });
 
-  final Size size;
 
   @override
   Widget build(BuildContext context) {
