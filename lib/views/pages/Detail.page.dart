@@ -42,7 +42,12 @@ class _HeaderDetail extends StatelessWidget {
               fit: BoxFit.cover,
               color: Colors.black38,
               alignment: Alignment.center,
-              colorBlendMode: BlendMode.multiply
+              colorBlendMode: BlendMode.multiply,
+              errorBuilder: (context, error, stackTrace) {
+
+                return Image.asset('assets/images/no_image_found.jpg',  fit: BoxFit.cover,  color: Colors.black38,
+                  colorBlendMode: BlendMode.multiply,);
+              }
           ),
         ),
         Column(
@@ -72,7 +77,7 @@ class _ContentDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.all(10),
+      padding: const EdgeInsets.all(10),
       child: ListView(
           children: [
             const Text("Description: ", style: TextStyle(fontSize: 22)),
