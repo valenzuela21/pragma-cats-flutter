@@ -12,9 +12,7 @@ class HomePage extends StatelessWidget {
     final listCats = context.watch<CatsBloc>().state.cats;
     final size =  MediaQuery.of(context).size;
     return SearchLayout(
-      child: SizedBox(
-        height: size.height / 1.34,
-        child: CustomScrollView(
+      child: CustomScrollView(
           slivers: <Widget>[
             SliverList(
               delegate: SliverChildBuilderDelegate(
@@ -26,7 +24,7 @@ class HomePage extends StatelessWidget {
             )
           ],
         ),
-      )
+      
     );
   }
 }

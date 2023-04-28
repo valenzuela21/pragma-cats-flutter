@@ -35,7 +35,8 @@ class SearchLayout extends StatelessWidget {
                     return "Ingrese el termino de la busqueda";
                   }
                 }),
-            child
+            Expanded(child: child),
+            const Text("Development: David Valenzuela Pardo", style: TextStyle(fontSize: 12),)
           ],
         ),
       )

@@ -13,7 +13,12 @@ class StandarLayout extends StatelessWidget {
         centerTitle: true,
         title: Logo.networkSvg()
       ),
-      body: child,
+      body: Column(
+        children: [
+          Expanded(child: child),
+          const Text("Development: David Valenzuela Pardo", style: TextStyle(fontSize: 12),)
+        ],
+      ),
     );
   }
 }
