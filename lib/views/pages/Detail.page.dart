@@ -76,16 +76,15 @@ class _ContentDescription extends StatelessWidget {
         children: [
           Text("Description: ", style: TextStyle(fontSize: 22)),
           SizedBox(height: 10),
-          Text(
-              "The Abyssinian is easy to care for, and a joy to have in your home. They’re affectionate cats and love both people and other animals."),
+          Text("${data?.description}"),
           SizedBox(height: 20),
           Text('Temperament: ', style: TextStyle(fontSize: 22)),
           SizedBox(height: 10),
-          Text('Active, Energetic, Independent, Intelligent, Gentle'),
+          Text("${data?.temperament}"),
           SizedBox(height: 20),
           Text('Origin: ', style: TextStyle(fontSize: 22)),
           SizedBox(height: 10),
-          Text('Egypt'),
+          Text("${data?.origin}"),
           SizedBox(height: 20)
         ],
       ),
