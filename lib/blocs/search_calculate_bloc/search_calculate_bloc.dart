@@ -32,10 +32,10 @@ class SearchCalculateBloc extends Bloc<SearchCalculateEvent, SearchCalculateStat
   }
 
   Future<void> _setFilterCats() async {
+    final String termLetter = searchCatBloc.state.searchTerm;
     try {
-      final List<dynamic> searchCats = await catsRepository.findCats(searchCatBloc.state.searchTerm);
-      print(searchCats);
-      add(SearchCalculateFiltertEvent(filterCats: searchCats));
+      final List<dynamic> searchCats = await catsRepository.findCats(termLetter);
+      add(SearchCalculateFiltertEvent(filterCats: searchCats, termLetter: termLetter));
     } on CustomError catch (e) {}
   }
 

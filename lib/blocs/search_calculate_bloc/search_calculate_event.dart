@@ -9,12 +9,13 @@ abstract class SearchCalculateEvent extends Equatable {
 
 class SearchCalculateFiltertEvent extends SearchCalculateEvent {
   final List<dynamic> filterCats;
+  final String termLetter;
 
-  SearchCalculateFiltertEvent({required this.filterCats});
+  SearchCalculateFiltertEvent({required this.filterCats, required this.termLetter});
 
   @override
   String toString() {
-    return 'SearchCalculateFiltertEvent{filterCats: $filterCats}';
+    return 'SearchCalculateFiltertEvent{filterCats: $filterCats, termLetter: $termLetter}';
   }
 
   @override

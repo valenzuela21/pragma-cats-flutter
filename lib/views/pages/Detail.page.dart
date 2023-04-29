@@ -1,3 +1,4 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:catspragma/models/cats.model.dart';
 import 'package:catspragma/views/layout/standar.layout.dart';
 import 'package:flutter/material.dart';
@@ -52,10 +53,17 @@ class _HeaderDetail extends StatelessWidget {
         ),
         Column(
           children: [
-            Text("${data?.name}",
-                style: const TextStyle(color: Colors.white, fontSize: 24)),
-            Text("${data?.weight.imperial} años",
-                style: const TextStyle(color: Colors.white, fontSize: 14))
+            FadeInDown(
+              duration: Duration(milliseconds: 1000),
+              child: Text("${data?.name}",
+                  style: const TextStyle(color: Colors.white, fontSize: 24)),
+            ),
+            const SizedBox(height: 8,),
+            FadeInUp(
+              duration: Duration(milliseconds: 1000),
+              child: Text("${data?.weight.imperial} años",
+                  style: const TextStyle(color: Colors.white, fontSize: 14)),
+            )
           ],
         )
       ],
@@ -76,23 +84,25 @@ class _ContentDescription extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(10),
-      child: ListView(
-          children: [
-            const Text("Description: ", style: TextStyle(fontSize: 22)),
-            const SizedBox(height: 10),
-            Text("${data?.description}"),
-            const SizedBox(height: 20),
-            const Text('Temperament: ', style: TextStyle(fontSize: 22)),
-            const SizedBox(height: 10),
-            Text("${data?.temperament}"),
-            const SizedBox(height: 20),
-            const Text('Origin: ', style: TextStyle(fontSize: 22)),
-            const SizedBox(height: 10),
-            Text("${data?.origin}"),
-            const SizedBox(height: 20)
-          ],
+    return FadeInLeft(
+      child: Padding(
+        padding: const EdgeInsets.all(10),
+        child: ListView(
+            children: [
+              const Text("Description: ", style: TextStyle(fontSize: 22)),
+              const SizedBox(height: 10),
+              Text("${data?.description}"),
+              const SizedBox(height: 20),
+              const Text('Temperament: ', style: TextStyle(fontSize: 22)),
+              const SizedBox(height: 10),
+              Text("${data?.temperament}"),
+              const SizedBox(height: 20),
+              const Text('Origin: ', style: TextStyle(fontSize: 22)),
+              const SizedBox(height: 10),
+              Text("${data?.origin}"),
+              const SizedBox(height: 20)
+            ],
+        ),
       ),
     );
   }

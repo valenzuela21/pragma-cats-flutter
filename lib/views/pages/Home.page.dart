@@ -10,8 +10,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final filterCats =  context.watch<SearchCalculateBloc>().state.filterCats;
     final listCats = context.watch<CatsBloc>().state.cats;
+    final filterCats =  context.watch<SearchCalculateBloc>().state.filterCats;
     return SearchLayout(
       child: CustomScrollView(
           slivers: <Widget>[
