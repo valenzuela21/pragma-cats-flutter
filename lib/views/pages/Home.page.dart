@@ -1,5 +1,7 @@
 import 'package:catspragma/blocs/cats/cats_bloc.dart';
 import 'package:catspragma/blocs/search_calculate_bloc/search_calculate_bloc.dart';
+import 'package:catspragma/blocs/search_cat/search_cat_bloc.dart';
+import 'package:catspragma/enums/catsStatus.enum.dart';
 import 'package:catspragma/views/components/card.component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,18 +12,18 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final listCats = context.watch<CatsBloc>().state.cats;
-    final filterCats =  context.watch<SearchCalculateBloc>().state.filterCats;
+    final listCats = context.watch<CatsBloc>().state;
+    final filterCats =  context.watch<SearchCalculateBloc>().state;
     return SearchLayout(
-      child: filterCats.isNotEmpty ?
+      child: (filterCats.filterCats.isNotEmpty || filterCats.status == CatsStatus.complete) ?
       CustomScrollView(
         slivers: <Widget>[
           SliverList(
             delegate: SliverChildBuilderDelegate(
                   (BuildContext context, int index) {
-                return CardComponent(cat: filterCats[index]);
+                return CardComponent(cat: filterCats.filterCats[index]);
               },
-              childCount: filterCats.length,
+              childCount: filterCats.filterCats.length,
             ),
           )
         ],
@@ -31,9 +33,9 @@ class HomePage extends StatelessWidget {
             SliverList(
               delegate: SliverChildBuilderDelegate(
                     (BuildContext context, int index) {
-                  return CardComponent(cat: listCats[index]);
+                  return CardComponent(cat: listCats.cats[index]);
                 },
-                childCount: listCats.length,
+                childCount: listCats.cats.length,
               ),
             )
           ],

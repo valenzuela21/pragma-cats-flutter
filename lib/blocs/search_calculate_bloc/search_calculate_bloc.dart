@@ -4,7 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
 import '../../enums/catsStatus.enum.dart';
-import '../../models/cats.model.dart';
 import '../../models/custom_error.model.dart';
 import '../../repositories/cats_respository.dart';
 import '../search_cat/search_cat_bloc.dart';
