@@ -1,1 +1,1 @@
-enum CatsStatus { initial, loading, loaded, error }
+enum CatsStatus { initial, loading, complete, error }

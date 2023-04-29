@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
 
+import '../../enums/catsStatus.enum.dart';
 import '../../models/cats.model.dart';
 import '../../models/custom_error.model.dart';
 import '../../repositories/cats_respository.dart';
@@ -27,16 +28,20 @@ class SearchCalculateBloc extends Bloc<SearchCalculateEvent, SearchCalculateStat
     });
 
     on<SearchCalculateFiltertEvent>((event, emit) {
-      emit(state.copyWith(filterCats: event.filterCats));
+      emit(state.copyWith(filterCats: event.filterCats, status: CatsStatus.complete));
     });
   }
 
   Future<void> _setFilterCats() async {
     final String termLetter = searchCatBloc.state.searchTerm;
+    if(termLetter.isEmpty) return;
+    emit(state.copyWith(status: CatsStatus.loading));
     try {
       final List<dynamic> searchCats = await catsRepository.findCats(termLetter);
       add(SearchCalculateFiltertEvent(filterCats: searchCats, termLetter: termLetter));
-    } on CustomError catch (e) {}
+    } on CustomError catch (e) {
+      emit(state.copyWith(status: CatsStatus.error, error: e));
+    }
   }
 
   @override
