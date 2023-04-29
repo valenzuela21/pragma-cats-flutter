@@ -3,12 +3,11 @@ part of 'search_cat_bloc.dart';
 
 class SearchCatState extends Equatable {
   final String searchTerm;
-  final List<dynamic> filterCast;
 
-  SearchCatState({ required this.searchTerm, required this.filterCast });
+  SearchCatState({ required this.searchTerm});
 
   factory SearchCatState.initial() {
-    return SearchCatState(searchTerm: '', filterCast: []);
+    return SearchCatState(searchTerm: '');
   }
 
   @override
@@ -21,12 +20,10 @@ class SearchCatState extends Equatable {
   }
 
   SearchCatState copyWith({
-    String? searchTerm,
-    List<dynamic>? filterCast
+    String? searchTerm
    }) {
     return SearchCatState(
-        searchTerm: searchTerm ?? this.searchTerm,
-        filterCast: filterCast ?? this.filterCast
+        searchTerm: searchTerm ?? this.searchTerm
        );
   }
 }

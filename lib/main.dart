@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:http/http.dart' as http;
 
+
 void main() {
   runApp(const MyApp());
 }
@@ -32,7 +33,11 @@ class MyApp extends StatelessWidget {
               create: (context) =>
                   CatsBloc(catsRepository: context.read<CatsRepository>())..add(AllCatsEvent()),
           ),
-          BlocProvider(create: (context) => SearchCatBloc(catsRepository: context.read<CatsRepository>()))
+          BlocProvider(create: (context) => SearchCatBloc()),
+          BlocProvider(create: (context) => SearchCalculateBloc(
+              catsRepository: context.read<CatsRepository>(),
+              searchCatBloc: BlocProvider.of<SearchCatBloc>(context)
+          ))
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
