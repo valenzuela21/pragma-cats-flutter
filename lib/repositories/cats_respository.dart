@@ -17,4 +17,15 @@ class CatsRepository {
       throw CustomError(errMsg: e.toString());
     }
   }
+
+  Future findCats(String term) async {
+    try{
+      final List<dynamic> resultFindCats =  await catsPragmaApiServices.getFindCats(term);
+      return resultFindCats;
+    } on MessageException catch (e) {
+      throw CustomError(errMsg:  e.message);
+    } catch (e) {
+      throw CustomError(errMsg: e.toString());
+    }
+  }
 }

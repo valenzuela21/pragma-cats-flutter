@@ -1,6 +1,5 @@
 part of 'cats_bloc.dart';
 
-enum CatsStatus { initial, loading, loaded, error }
 
 class CatsState extends Equatable {
   final CatsStatus status;
@@ -10,9 +9,8 @@ class CatsState extends Equatable {
   CatsState({required this.status, required this.cats, required this.error});
 
   factory CatsState.initial() {
-    final List<Cats> cats =  [Cats.initial()];
     return CatsState(
-        status: CatsStatus.initial, cats: cats, error: CustomError());
+        status: CatsStatus.initial, cats: const [], error: CustomError());
   }
 
   @override

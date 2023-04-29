@@ -1,6 +1,8 @@
+import 'package:catspragma/blocs/blocs.dart';
 import 'package:catspragma/views/ui/input.ui.dart';
 import 'package:catspragma/views/ui/logo.ui.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../ui/footer.ui.dart';
 
@@ -23,20 +25,22 @@ class SearchLayout extends StatelessWidget {
         child: Column(
           children: [
             TextFormField(
-                cursorColor: Colors.white,
+                cursorColor: Colors.grey,
                 autocorrect: false,
-                style: const TextStyle(color: Colors.white),
+                style: const TextStyle(color: Colors.black45),
                 keyboardType: TextInputType.text,
                 decoration: InputUi.generalInputDecoration(
-                    hinText: 'Ejemplo: Abyssinian',
-                    labelText: "Buscar...",
+                    hinText: 'Example: Abyssinian',
+                    labelText: "Search ...",
                     prefixIcon: Icons.search,
                     colorInput: Colors.grey),
-                validator: (String? value) {
-                  if (value == null || value.trim().isEmpty) {
-                    return "Ingrese el termino de la busqueda";
+                onChanged: (String? newSearchTerm){
+                  if(newSearchTerm != null){
+                    context.read<SearchCatBloc>().add(SetSearchTermEvent(newSearchTerm: newSearchTerm));
                   }
-                }),
+                },
+
+            ),
             Expanded(child: child),
             Footer()
           ],

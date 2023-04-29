@@ -1,11 +1,11 @@
-import 'package:catspragma/blocs/cats/cats_bloc.dart';
+import 'package:catspragma/blocs/blocs.dart';
 import 'package:catspragma/repositories/cats_respository.dart';
 import 'package:catspragma/services/cats_pragma_api.service.dart';
+import 'package:catspragma/views/pages/page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:catspragma/views/pages/page.dart';
 import 'package:http/http.dart' as http;
 
 void main() {
@@ -31,7 +31,8 @@ class MyApp extends StatelessWidget {
           BlocProvider(
               create: (context) =>
                   CatsBloc(catsRepository: context.read<CatsRepository>())..add(AllCatsEvent()),
-          )
+          ),
+          BlocProvider(create: (context) => SearchCatBloc(catsRepository: context.read<CatsRepository>()))
         ],
         child: MaterialApp(
           debugShowCheckedModeBanner: false,
