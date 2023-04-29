@@ -13,7 +13,20 @@ class HomePage extends StatelessWidget {
     final listCats = context.watch<CatsBloc>().state.cats;
     final filterCats =  context.watch<SearchCalculateBloc>().state.filterCats;
     return SearchLayout(
-      child: CustomScrollView(
+      child: filterCats.isNotEmpty ?
+      CustomScrollView(
+        slivers: <Widget>[
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+                  (BuildContext context, int index) {
+                return CardComponent(cat: filterCats[index]);
+              },
+              childCount: filterCats.length,
+            ),
+          )
+        ],
+      ):
+      CustomScrollView(
           slivers: <Widget>[
             SliverList(
               delegate: SliverChildBuilderDelegate(
@@ -25,7 +38,6 @@ class HomePage extends StatelessWidget {
             )
           ],
         ),
-
     );
   }
 }
