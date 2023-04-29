@@ -19,5 +19,5 @@ class SearchCalculateFiltertEvent extends SearchCalculateEvent {
   }
 
   @override
-  List<Object> get props => [];
+  List<Object> get props => [filterCats, termLetter];
 }

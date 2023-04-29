@@ -27,7 +27,7 @@ class SearchCalculateBloc extends Bloc<SearchCalculateEvent, SearchCalculateStat
     });
 
     on<SearchCalculateFiltertEvent>((event, emit) {
-      emit(state.copyWith(filterCats: event.filterCats, status: CatsStatus.complete));
+      emit(state.copyWith(filterCats: event.filterCats, status: CatsStatus.complete, searchTerm: event.termLetter));
     });
   }
 
