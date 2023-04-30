@@ -19,30 +19,32 @@ class SearchLayout extends StatelessWidget {
         centerTitle: true,
         title: Logo()
       ),
-      body:Container(
-        width: 550,
-        padding: const EdgeInsets.all(15),
-        child: Column(
-          children: [
-            TextFormField(
-                cursorColor: Colors.grey,
-                autocorrect: false,
-                style: const TextStyle(color: Colors.black45),
-                keyboardType: TextInputType.text,
-                decoration: InputUi.generalInputDecoration(
-                    hinText: 'Example: Abyssinian',
-                    labelText: "Search ...",
-                    prefixIcon: Icons.search,
-                    colorInput: Colors.grey),
-                onChanged: (String? newSearchTerm){
-                  if(newSearchTerm != null){
-                    context.read<SearchCatBloc>().add(SetSearchTermEvent(newSearchTerm: newSearchTerm));
-                  }
-                },
+      body:Center(
+        child: Container(
+          width: 400,
+          padding: const EdgeInsets.all(15),
+          child: Column(
+            children: [
+              TextFormField(
+                  cursorColor: Colors.grey,
+                  autocorrect: false,
+                  style: const TextStyle(color: Colors.black45),
+                  keyboardType: TextInputType.text,
+                  decoration: InputUi.generalInputDecoration(
+                      hinText: 'Example: Abyssinian',
+                      labelText: "Search ...",
+                      prefixIcon: Icons.search,
+                      colorInput: Colors.grey),
+                  onChanged: (String? newSearchTerm){
+                    if(newSearchTerm != null){
+                      context.read<SearchCatBloc>().add(SetSearchTermEvent(newSearchTerm: newSearchTerm));
+                    }
+                  },
 
-            ),
-            Expanded(child: child)
-          ],
+              ),
+              Expanded(child: child)
+            ],
+          ),
         ),
       )
     );
