@@ -6,6 +6,7 @@ import 'package:catspragma/views/ui/loading.ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../blocs/search_cat/search_cat_bloc.dart';
 import '../layout/search.layout.dart';
 
 class HomePage extends StatelessWidget {
@@ -15,12 +16,13 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final listCats = context.watch<CatsBloc>().state;
     final filterCats = context.watch<SearchCalculateBloc>().state;
-    if (filterCats.status == CatsStatus.loading ||
+    if (listCats.status == CatsStatus.loading ||
         filterCats.status == CatsStatus.loading) {
       return Loading();
     }
     return SearchLayout(
-      child: (filterCats.status == CatsStatus.complete)
+      child: (filterCats.status == CatsStatus.complete &&
+              filterCats.filterCats.isNotEmpty)
           ? _SearchResult(filterCats: filterCats)
           : _InitialAllCats(listCats: listCats),
     );
@@ -80,7 +82,7 @@ class _SearchResult extends StatelessWidget {
                   const SizedBox(height: 10),
                   const Text(
                     "Not found...",
-                    style: const TextStyle(color: Colors.black45, fontSize: 12),
+                    style: TextStyle(color: Colors.black45, fontSize: 12),
                   ),
                 ],
               ))
