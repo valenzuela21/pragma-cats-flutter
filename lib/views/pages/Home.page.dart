@@ -75,8 +75,9 @@ class _SearchResult extends StatelessWidget {
                   Image.asset(
                     'assets/images/no_found_search.png',
                     fit: BoxFit.fitHeight,
-                    width: 180,
+                    width: 200,
                   ),
+                  const SizedBox(height: 10),
                   const Text(
                     "Not found...",
                     style: const TextStyle(color: Colors.black45, fontSize: 12),
