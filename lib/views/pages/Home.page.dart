@@ -1,6 +1,5 @@
 import 'package:catspragma/blocs/cats/cats_bloc.dart';
 import 'package:catspragma/blocs/search_calculate_bloc/search_calculate_bloc.dart';
-import 'package:catspragma/blocs/search_cat/search_cat_bloc.dart';
 import 'package:catspragma/enums/catsStatus.enum.dart';
 import 'package:catspragma/views/components/card.component.dart';
 import 'package:flutter/material.dart';
