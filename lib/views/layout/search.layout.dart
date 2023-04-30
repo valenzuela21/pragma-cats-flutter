@@ -41,8 +41,7 @@ class SearchLayout extends StatelessWidget {
                 },
 
             ),
-            Expanded(child: child),
-            Footer()
+            Expanded(child: child)
           ],
         ),
       )
