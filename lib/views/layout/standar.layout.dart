@@ -12,7 +12,7 @@ class StandarLayout extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Logo.networkSvg()
+        title: Logo.networkSvg(context)
       ),
       body: Column(
         children: [
