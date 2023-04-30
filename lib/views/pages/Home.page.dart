@@ -19,14 +19,15 @@ class HomePage extends StatelessWidget {
       child: (filterCats.status == CatsStatus.complete)
           ? Column(
               children: [
-                Text("Search by: ${filterCats?.searchTerm}"),
+                Text("Search by: ${filterCats?.searchTerm}",  style: const TextStyle(color: Colors.black45, fontSize: 16)),
                 (filterCats.filterCats.isEmpty)
                     ? Expanded(
                         child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text("Not found..."),
+                          Image.asset('assets/images/no_found_search.png', fit: BoxFit.fitHeight, width: 160,),
+                          const Text("Not found...", style: const TextStyle(color: Colors.black45, fontSize: 12),),
                         ],
                       ))
                     : Expanded(child: _BoxSearchResult(filterCats: filterCats))
