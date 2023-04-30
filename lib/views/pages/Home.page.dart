@@ -17,35 +17,73 @@ class HomePage extends StatelessWidget {
     final filterCats = context.watch<SearchCalculateBloc>().state;
     return SearchLayout(
       child: (filterCats.status == CatsStatus.complete)
-          ? Column(
-              children: [
-                Text("Search by: ${filterCats?.searchTerm}",  style: const TextStyle(color: Colors.black45, fontSize: 16)),
-                (filterCats.filterCats.isEmpty)
-                    ? Expanded(
-                        child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Image.asset('assets/images/no_found_search.png', fit: BoxFit.fitHeight, width: 160,),
-                          const Text("Not found...", style: const TextStyle(color: Colors.black45, fontSize: 12),),
-                        ],
-                      ))
-                    : Expanded(child: _BoxSearchResult(filterCats: filterCats))
-              ],
-            )
-          : CustomScrollView(
-              slivers: <Widget>[
-                SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (BuildContext context, int index) {
-                      return CardComponent(cat: listCats.cats[index]);
-                    },
-                    childCount: listCats.cats.length,
-                  ),
-                )
-              ],
-            ),
+          ? _SearchResult(filterCats: filterCats)
+          : _InitialAllCats(listCats: listCats),
     );
+  }
+}
+
+class _InitialAllCats extends StatelessWidget {
+  const _InitialAllCats({
+    super.key,
+    required this.listCats,
+  });
+
+  final CatsState listCats;
+
+  @override
+  Widget build(BuildContext context) {
+    return CustomScrollView(
+        slivers: <Widget>[
+          SliverList(
+            delegate: SliverChildBuilderDelegate(
+              (BuildContext context, int index) {
+                return CardComponent(cat: listCats.cats[index]);
+              },
+              childCount: listCats.cats.length,
+            ),
+          )
+        ],
+      );
+  }
+}
+
+class _SearchResult extends StatelessWidget {
+  const _SearchResult({
+    super.key,
+    required this.filterCats,
+  });
+
+  final SearchCalculateState filterCats;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+        children: [
+          Text("Search by: ${filterCats?.searchTerm}",
+              style:
+                  const TextStyle(color: Colors.black45, fontSize: 16)),
+          (filterCats.filterCats.isEmpty)
+              ? Expanded(
+                  child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/no_found_search.png',
+                      fit: BoxFit.fitHeight,
+                      width: 160,
+                    ),
+                    const Text(
+                      "Not found...",
+                      style: const TextStyle(
+                          color: Colors.black45, fontSize: 12),
+                    ),
+                  ],
+                ))
+              : Expanded(child: _BoxSearchResult(filterCats: filterCats))
+        ],
+      );
   }
 }
 
