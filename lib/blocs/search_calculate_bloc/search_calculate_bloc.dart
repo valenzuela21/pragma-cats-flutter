@@ -43,8 +43,7 @@ class SearchCalculateBloc
     try {
       final List<dynamic> searchCats =
           await catsRepository.findCats(termLetter);
-      add(SearchCalculateFiltertEvent(
-          filterCats: searchCats, termLetter: termLetter));
+      emit(state.copyWith(status: CatsStatus.complete, filterCats: searchCats,  searchTerm: termLetter));
     } on CustomError catch (e) {
       emit(state.copyWith(status: CatsStatus.error, error: e));
     }
