@@ -1,10 +1,18 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
-class Logo {
-  static Widget networkSvg (context) {
-    return GestureDetector(
+import '../../blocs/search_calculate_bloc/search_calculate_bloc.dart';
+
+
+class Logo extends StatelessWidget {
+  const Logo({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+     return GestureDetector(
       onTap: (){
+        context.read<SearchCalculateBloc>().add(SearchCalculateFiltertEvent(filterCats: [], termLetter: ''));
         Navigator.pushNamed(context, '/');
       },
       child: SvgPicture.network(
@@ -15,3 +23,4 @@ class Logo {
     );
   }
 }
+

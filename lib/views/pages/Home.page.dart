@@ -16,6 +16,8 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final listCats = context.watch<CatsBloc>().state;
     final filterCats = context.watch<SearchCalculateBloc>().state;
+
+    //context.read<SearchCalculateBloc>().add(SearchCalculateFiltertEvent(filterCats: [], termLetter: ''));
     if (listCats.status == CatsStatus.loading ||
         filterCats.status == CatsStatus.loading) {
       return Loading();

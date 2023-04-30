@@ -17,7 +17,7 @@ class SearchLayout extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Logo.networkSvg(context)
+        title: Logo()
       ),
       body:Container(
         width: 550,
