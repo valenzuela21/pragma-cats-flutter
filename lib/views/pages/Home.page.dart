@@ -5,8 +5,6 @@ import 'package:catspragma/views/components/card.component.dart';
 import 'package:catspragma/views/ui/loading.ui.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../blocs/search_cat/search_cat_bloc.dart';
 import '../layout/search.layout.dart';
 
 class HomePage extends StatelessWidget {
@@ -17,7 +15,6 @@ class HomePage extends StatelessWidget {
     final listCats = context.watch<CatsBloc>().state;
     final filterCats = context.watch<SearchCalculateBloc>().state;
 
-    //context.read<SearchCalculateBloc>().add(SearchCalculateFiltertEvent(filterCats: [], termLetter: ''));
     if (listCats.status == CatsStatus.loading ||
         filterCats.status == CatsStatus.loading) {
       return Loading();
@@ -67,9 +64,11 @@ class _SearchResult extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Text("Search by: ${filterCats?.searchTerm}",
             style: const TextStyle(color: Colors.black45, fontSize: 16)),
+        const SizedBox(height: 10),
         (filterCats.filterCats.isEmpty)
             ? Expanded(
                 child: Column(
