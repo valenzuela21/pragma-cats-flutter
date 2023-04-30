@@ -20,8 +20,7 @@ class HomePage extends StatelessWidget {
       return Loading();
     }
     return SearchLayout(
-      child: (filterCats.status == CatsStatus.complete &&
-              filterCats.filterCats.isNotEmpty)
+      child: (filterCats.status == CatsStatus.complete)
           ? _SearchResult(filterCats: filterCats)
           : _InitialAllCats(listCats: listCats),
     );
@@ -78,7 +77,7 @@ class _SearchResult extends StatelessWidget {
                   Image.asset(
                     'assets/images/no_found_search.png',
                     fit: BoxFit.fitHeight,
-                    width: 200,
+                    width: 180,
                   ),
                   const SizedBox(height: 10),
                   const Text(

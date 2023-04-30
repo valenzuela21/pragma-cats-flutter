@@ -28,6 +28,12 @@ class SearchCalculateBloc
       _setFilterCats();
     });
 
+    on<InitialSearchFilterEvent>((event, emit) {
+      emit(state.copyWith(
+          filterCats: [],
+          status: CatsStatus.initial,
+          searchTerm: ''));
+    });
     on<SearchCalculateFiltertEvent>((event, emit) {
       emit(state.copyWith(
           filterCats: event.filterCats,

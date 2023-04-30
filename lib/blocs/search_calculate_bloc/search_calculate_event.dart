@@ -7,6 +7,8 @@ abstract class SearchCalculateEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class InitialSearchFilterEvent extends SearchCalculateEvent {}
+
 class SearchCalculateFiltertEvent extends SearchCalculateEvent {
   final List<dynamic> filterCats;
   final String termLetter;

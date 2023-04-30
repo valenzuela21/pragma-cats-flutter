@@ -12,7 +12,7 @@ class Logo extends StatelessWidget {
   Widget build(BuildContext context) {
      return GestureDetector(
       onTap: (){
-        context.read<SearchCalculateBloc>().add(SearchCalculateFiltertEvent(filterCats: [], termLetter: ''));
+        context.read<SearchCalculateBloc>().add(InitialSearchFilterEvent());
         Navigator.pushNamed(context, '/');
       },
       child: SvgPicture.network(
