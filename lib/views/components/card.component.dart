@@ -80,7 +80,7 @@ class CardComponent extends StatelessWidget {
               left: 0,
               bottom: 0,
               child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
                   alignment: Alignment.centerLeft,
                   width: 200,
                   height: 40,
